@@ -5,7 +5,8 @@ import { transformerAttributify, transformerClass } from 'unocss-preset-weapp/tr
 export default defineConfig({
   presets: [
     // https://github.com/MellowCo/unocss-preset-weapp
-    presetWeapp()
+    // todo: ts error
+    presetWeapp() as any
   ],
   shortcuts: [
     {
@@ -16,9 +17,9 @@ export default defineConfig({
 
   transformers: [
     // https://github.com/MellowCo/unocss-preset-weapp/tree/main/src/transformer/transformerAttributify
-    transformerAttributify(),
+    transformerAttributify() as any,
 
     // https://github.com/MellowCo/unocss-preset-weapp/tree/main/src/transformer/transformerClass
-    transformerClass()
+    transformerClass() as any
   ]
 })
