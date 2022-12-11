@@ -8,7 +8,7 @@
  * const omitObj2 = omit(obj, ['a', 'c']) // { b: 2 }
  * const omitObj3 = omit(obj, 'd' ) // { a: 1, b: 2, c: 3 }
  */
-export default function omit(obj, omitKey) {
+export default function omit(obj: any, omitKey: string | string[]) {
   const allKeys = Object.keys(obj)
   if (Array.isArray(omitKey)) {
     const rest = {}

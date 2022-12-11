@@ -7,7 +7,7 @@
  * const pickObj1 = pick(obj, 'a') // { a: 1 }
  * const pickObj2 = pick(obj, ['a', 'c']) // { a: 1, c: 3 }
  */
-export default function pick(obj, pickKey) {
+export default function pick(obj: any, pickKey: string | string[]) {
   const allKeys = Object.keys(obj)
   if (Array.isArray(pickKey)) {
     const rest = {}

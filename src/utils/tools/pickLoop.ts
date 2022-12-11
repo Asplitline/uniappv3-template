@@ -3,7 +3,7 @@
  * @param rest
  * @returns
  */
-export default function pickLoopValue(obj, ...rest) {
+export default function pickLoopValue(obj: any, ...rest: string[]) {
   let res = obj
   // console.log(rest);
   rest.every((i) => {
