@@ -1,5 +1,5 @@
 <template>
-  <view class="cs-layout" :class="{ hasTabbar: hasTabbar, hasNavbar: hasNavbar }">
+  <view class="cs-layout" :class="{ hasTabbar, hasNavbar, hasPadding }">
     <slot></slot>
   </view>
 </template>
@@ -13,6 +13,10 @@ defineProps({
   hasNavbar: {
     type: Boolean,
     default: false
+  },
+  hasPadding: {
+    type: Boolean,
+    default: true
   }
 })
 </script>
@@ -21,10 +25,11 @@ defineProps({
 .cs-layout {
   box-sizing: border-box;
   height: 100vh;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
   padding-top: var(--status-bar-height);
-
+  &.hasPadding {
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+  }
   &.hasTabbar {
     // padding-bottom: 100rpx;
   }

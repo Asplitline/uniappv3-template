@@ -1,32 +1,82 @@
 {
-  "pages": [
-    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-    {
-      "path": "pages/index/index",
-      "style": {
-        "navigationBarTitleText": "uni-app"
-      }
-    },
-    {
-      "path": "pages/login/index",
-      "style": {
-        "navigationBarTitleText": "login",
-        "navigationStyle": "custom"
-      }
-    }
-  ],
-  "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
-  },
-  "easycom": {
-    "autoscan": true,
-    "custom": {
-      "^u-(.*)": "vk-uview-ui/components/u-$1/u-$1.vue",
-      "^cs-(.*)": "@/components/base/cs-$1/index.vue",
-      "^pcs-(.*)": "@/components/packages/pcs-$1/index.vue"
-    }
-  }
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "login",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/inbox/index",
+			"style": {
+				"navigationBarTitleText": "inbox"
+			}
+		},
+		{
+			"path": "pages/comments/index",
+			"style": {
+				"navigationBarTitleText": "comments"
+			}
+		},
+		{
+			"path": "pages/info/index",
+			"style": {
+				"navigationBarTitleText": "info"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#272727",
+		"selectedColor": "#272727",
+		"backgroundColor": "#fff",
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home-active.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/inbox/index",
+				"iconPath": "static/tabbar/inbox.png",
+				"selectedIconPath": "static/tabbar/inbox-active.png",
+				"text": "留言箱"
+			},
+			{
+				"pagePath": "pages/comments/index",
+				"iconPath": "static/tabbar/comments.png",
+				"selectedIconPath": "static/tabbar/comments-active.png",
+				"text": "讨论区"
+			},
+			{
+				"pagePath": "pages/info/index",
+				"iconPath": "static/tabbar/info.png",
+				"selectedIconPath": "static/tabbar/info-active.png",
+				"text": "个人中心"
+			}
+		]
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^u-(.*)": "vk-uview-ui/components/u-$1/u-$1.vue",
+			"^cs-(.*)": "@/components/base/cs-$1/index.vue",
+			"^pcs-(.*)": "@/components/packages/pcs-$1/index.vue"
+		}
+	}
 }

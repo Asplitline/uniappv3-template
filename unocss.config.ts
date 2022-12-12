@@ -11,7 +11,10 @@ export default defineConfig({
   shortcuts: [
     {
       'border-base': 'border border-gray-500_10',
-      center: 'flex justify-center items-center'
+      center: 'flex justify-center items-center',
+      btn: 'w-100% b-rd-4 h-70 flex items-center justify-center',
+      'bg-primary': 'bg-blue-700',
+      'color-primary': 'color-blue-700'
     }
   ],
 
