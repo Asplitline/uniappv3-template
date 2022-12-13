@@ -26,6 +26,7 @@ defineProps({
   box-sizing: border-box;
   height: 100vh;
   padding-top: var(--status-bar-height);
+  background-color: #fafafa;
   &.hasPadding {
     padding-left: 20rpx;
     padding-right: 20rpx;
