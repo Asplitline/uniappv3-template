@@ -12,8 +12,10 @@ export default defineConfig({
     {
       'border-base': 'border border-gray-500_10',
       center: 'flex justify-center items-center',
-      btn: 'w-100% b-rd-4 h-70 flex items-center justify-center',
+      btn: 'w-100%  text-28 b-rd-4 h-70 flex items-center justify-center',
       'bg-primary': 'bg-blue-700',
+      'btn-primary': 'bg-blue-700 text-white',
+      'btn-primary-2': 'bg-blue-1 text-grey',
       'color-primary': 'color-blue-700'
     }
   ],

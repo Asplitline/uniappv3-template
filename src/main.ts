@@ -1,7 +1,7 @@
-import { createSSRApp, VueElement } from 'vue'
-import uView from 'vk-uview-ui'
-import App from './App.vue'
 import 'uno.css'
+import uView from 'vk-uview-ui'
+import { createSSRApp } from 'vue'
+import App from './App.vue'
 export function createApp() {
   const app = createSSRApp(App)
   app.use(uView)

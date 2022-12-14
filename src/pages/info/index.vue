@@ -12,7 +12,7 @@
     <view class="flex flex-col mt-4">
       <text class="mb-2 text-32 nav-title">基础</text>
       <view class="nav-list bg-white flex shadow b-rd-3">
-        <view class="nav-item">
+        <view class="nav-item" @click="skip('/pages/info/modify-info')">
           <image src="@/static/icons/info.png" class="img"></image>
           <text class="txt">个人资料</text>
         </view>
