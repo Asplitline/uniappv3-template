@@ -34,6 +34,13 @@
         "navigationBarTitleText": "info",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/info/modify-pwd",
+      "style": {
+        "navigationBarTitleText": "modify-pwd",
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {

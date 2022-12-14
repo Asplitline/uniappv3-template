@@ -11,10 +11,14 @@
     </view>
     <view class="flex flex-col mt-4">
       <text class="mb-2 text-32 nav-title">基础</text>
-      <view class="nav-list bg-white flex shadow b-rd-3 p-2">
+      <view class="nav-list bg-white flex shadow b-rd-3">
         <view class="nav-item">
           <image src="@/static/icons/info.png" class="img"></image>
           <text class="txt">个人资料</text>
+        </view>
+        <view class="nav-item" @click="skip('/pages/info/modify-pwd')">
+          <image src="@/static/icons/pwd.png" class="img"></image>
+          <text class="txt">修改密码</text>
         </view>
         <view class="nav-item">
           <image src="@/static/icons/logout.png" class="img"></image>
@@ -24,7 +28,7 @@
     </view>
     <view class="flex flex-col mt-4">
       <text class="mb-2 text-32 nav-title">其他</text>
-      <view class="nav-list bg-white flex shadow b-rd-3 p-2">
+      <view class="nav-list bg-white flex shadow b-rd-3">
         <view class="nav-item">
           <image src="@/static/icons/process.png" class="img"></image>
           <text class="txt">当前进度</text>
@@ -34,7 +38,11 @@
   </cs-layout>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const skip = (url: string) => {
+  uni.navigateTo({ url })
+}
+</script>
 
 <style lang="scss" scoped>
 .edit-btn {
@@ -48,6 +56,7 @@
 
 .nav-list {
   width: 100%;
+  padding: 24rpx 0 16rpx;
   .nav-item {
     display: flex;
     justify-content: center;
