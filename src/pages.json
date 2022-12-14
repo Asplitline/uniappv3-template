@@ -29,6 +29,13 @@
       }
     },
     {
+      "path": "pages/comments/post-detail",
+      "style": {
+        "navigationBarTitleText": "comments",
+        "navigationStyle": "custom"
+      }
+    },
+    {
       "path": "pages/info/index",
       "style": {
         "navigationBarTitleText": "info",

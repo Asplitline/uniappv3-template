@@ -39,9 +39,8 @@
 </template>
 
 <script lang="ts" setup>
-const skip = (url: string) => {
-  uni.navigateTo({ url })
-}
+import { inject } from 'vue'
+const skip = inject('skip')
 </script>
 
 <style lang="scss" scoped>
