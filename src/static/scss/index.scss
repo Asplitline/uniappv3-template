@@ -1,7 +1,17 @@
 @import url(cs-style.scss);
 
+/* #ifndef MP */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+/* #endif */
+
+/* #ifdef MP */
+view,
+view:before,
+view:after {
+  box-sizing: border-box;
+}
+/* #endif */
