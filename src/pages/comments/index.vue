@@ -1,5 +1,5 @@
 <template>
-  <cs-layout class="comments" :hasPadding="false">
+  <cs-layout class="comments" :hasPadding="false" hasTabbar>
     <u-tabs :list="list" :is-scroll="false" v-model="current"></u-tabs>
     <view class="post-list">
       <view class="post-item flex mb-6 p-4" v-for="i in 4">

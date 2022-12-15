@@ -1,5 +1,5 @@
 <template>
-  <view class="inbox">inbox</view>
+  <cs-layout class="inbox" hasTabbar>inbox</cs-layout>
 </template>
 
 <script lang="ts" setup></script>

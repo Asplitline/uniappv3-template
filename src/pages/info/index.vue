@@ -1,5 +1,5 @@
 <template>
-  <cs-layout class="info">
+  <cs-layout class="info" hasTabbar>
     <view class="flex justify-center"> </view>
     <view class="flex items-center justify-between mt-3">
       <u-image width="120" height="120" shape="circle"></u-image>

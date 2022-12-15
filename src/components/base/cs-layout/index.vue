@@ -32,7 +32,7 @@ defineProps({
     padding-right: 20rpx;
   }
   &.hasTabbar {
-    // padding-bottom: 100rpx;
+    height: calc(100vh - 100rpx);
   }
 
   &.hasNavbar {
