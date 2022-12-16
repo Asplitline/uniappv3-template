@@ -15,13 +15,13 @@
         "navigationStyle": "custom"
       }
     },
-    {
-      "path": "pages/inbox/index",
-      "style": {
-        "navigationBarTitleText": "inbox",
-        "navigationStyle": "custom"
-      }
-    },
+    // {
+    //   "path": "pages/inbox/index",
+    //   "style": {
+    //     "navigationBarTitleText": "inbox",
+    //     "navigationStyle": "custom"
+    //   }
+    // },
     {
       "path": "pages/comments/index",
       "style": {
@@ -76,12 +76,12 @@
         "selectedIconPath": "static/tabbar/home-active.png",
         "text": "首页"
       },
-      {
-        "pagePath": "pages/inbox/index",
-        "iconPath": "static/tabbar/inbox.png",
-        "selectedIconPath": "static/tabbar/inbox-active.png",
-        "text": "留言箱"
-      },
+      // {
+      //   "pagePath": "pages/inbox/index",
+      //   "iconPath": "static/tabbar/inbox.png",
+      //   "selectedIconPath": "static/tabbar/inbox-active.png",
+      //   "text": "留言箱"
+      // },
       {
         "pagePath": "pages/comments/index",
         "iconPath": "static/tabbar/comments.png",
