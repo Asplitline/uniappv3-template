@@ -9,6 +9,13 @@
       }
     },
     {
+      "path": "pages/index/upload-info",
+      "style": {
+        "navigationBarTitleText": "uni-app",
+        "navigationStyle": "custom"
+      }
+    },
+    {
       "path": "pages/login/index",
       "style": {
         "navigationBarTitleText": "login",
