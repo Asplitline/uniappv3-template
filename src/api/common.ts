@@ -1,4 +1,5 @@
-import request from '@/api/request'
+import request, { IResponseData } from '@/api/request'
+import { obj2Query } from '@/utils/tools'
 
 // export function login() {
 
@@ -6,9 +7,9 @@ import request from '@/api/request'
 // }
 
 export function register(body: any) {
-  return request('/user/login', { method: 'POST', data: body })
+  return request('/user/login', { method: 'POST', data: body }) as Promise<IResponseData>
 }
 
 export function login(data: any) {
-  return request('/user/back/login', { method: 'POST', data })
+  return request(`/user/back/login?${obj2Query(data)}`, { method: 'POST' })
 }

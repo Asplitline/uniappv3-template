@@ -2,7 +2,12 @@ const isDev = true
 export const requestUrl = isDev ? '/api' : 'http://localhost:8090'
 
 type REQUEST_TYPE = 'POST' | 'OPTIONS' | 'GET' | 'HEAD' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT' | undefined
-
+export interface IResponseData {
+  data?: any
+  code: number
+  success: boolean
+  message: string
+}
 interface RequestOption {
   method?: REQUEST_TYPE
   data?: any
@@ -11,7 +16,10 @@ interface RequestOption {
   headers?: any
 }
 
-export default (url: string, { method = 'GET', data = {}, showLoading = false, timeout = 5000, headers = {} }: RequestOption) => {
+export default (
+  url: string,
+  { method = 'GET', data, showLoading = false, timeout = 5000, headers = {} }: RequestOption
+): Promise<IResponseData> => {
   return new Promise((resolve, reject) => {
     if (showLoading) {
       uni.showLoading({
