@@ -39,9 +39,14 @@
 </template>
 
 <script lang="ts" setup>
+import { useUserStore } from '@/store'
+import CacheStorage from '@/utils/cache'
 import { inject } from 'vue'
 const skip = inject('skip')
+const userStore = useUserStore()
 const handleLogout = () => {
+  CacheStorage.clearItem()
+  userStore.$reset()
   uni.redirectTo({ url: '/pages/login/index' })
 }
 </script>

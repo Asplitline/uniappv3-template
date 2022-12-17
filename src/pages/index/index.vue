@@ -49,8 +49,9 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, inject } from 'vue'
+import { reactive, ref, inject, onMounted } from 'vue'
 import { infoList } from '@/utils/static'
+import { useUserStore } from '@/store'
 const active = ref(0)
 const isUpload = ref(false)
 const authList = reactive(infoList)
@@ -71,6 +72,10 @@ const next = () => {
     active.value = 0
   }
 }
+const userStore = useUserStore()
+onMounted(() => {
+  console.log('userStore.userInfo :', userStore.userInfo)
+})
 </script>
 
 <style lang="scss" scoped></style>

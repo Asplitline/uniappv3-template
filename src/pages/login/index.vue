@@ -16,26 +16,41 @@
     <view class="p-4 mt-4">
       <u-form :model="formModel" ref="uForm" label-width="120">
         <u-form-item :border-bottom="false"
-          ><u-input border v-model="formModel.username" placeholder="请输入账号" class="cs-input"
+          ><u-input v-model="formModel.username" placeholder="请输入账号" class="cs-input b"
         /></u-form-item>
         <u-form-item :border-bottom="false"
-          ><u-input border v-model="formModel.password" placeholder="请输入密码" class="cs-input" /></u-form-item
+          ><u-input type="password" v-model="formModel.password" placeholder="请输入密码" class="cs-input b" /></u-form-item
       ></u-form>
     </view>
     <view class="px-10 mt-4 text-center">
-      <button class="btn bg-primary text-white text-30" @click="handleLogin">登录</button>
+      <button class="btn bg-primary text-white text-30" @click="submitLogin">登录</button>
       <text class="mt-6 inline-block">没有账号,<text class="color-primary" @click="skip('/pages/login/register')">立即注册</text></text>
     </view>
   </cs-layout>
 </template>
 
 <script lang="ts" setup>
+import { login } from '@/api/common'
+import useMessage from '@/hooks/useMessage'
+import { useUserStore } from '@/store'
 import { inject, reactive } from 'vue'
 const formModel = reactive<{ username?: string; password?: string }>({})
 const skip = inject('skip')
-const handleLogin = () => {
-  uni.switchTab({ url: '/pages/index/index' })
+
+const { handleMessage } = useMessage()
+const userStore = useUserStore()
+const submitLogin = async () => {
+  // todo ts error
+  const { success, message, data } = await login(formModel)
+  handleMessage(success, message, () => {
+    userStore.setUserInfo(data)
+    uni.$u.toast('登录成功')
+    setTimeout(() => {
+      uni.switchTab({ url: '/pages/index/index' })
+    }, 1000)
+  })
 }
+console.log('userStore.userInfo :', userStore.userInfo)
 </script>
 
 <style lang="scss" scoped>

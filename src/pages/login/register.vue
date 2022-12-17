@@ -16,29 +16,54 @@
     <view class="p-4 mt-4">
       <u-form :model="formModel" ref="uForm" label-width="120">
         <u-form-item :border-bottom="false"
-          ><u-input border v-model="formModel.username" placeholder="请输入账号" class="cs-input"
+          ><u-input v-model="formModel.username" placeholder="请输入账号" class="cs-input b"
         /></u-form-item>
+        <u-form-item :border-bottom="false"><u-input v-model="formModel.name" placeholder="请输入姓名" class="cs-input b" /></u-form-item>
         <u-form-item :border-bottom="false"
-          ><u-input border v-model="formModel.password" placeholder="请输入姓名" class="cs-input"
-        /></u-form-item>
-        <u-form-item :border-bottom="false"
-          ><u-input border v-model="formModel.password" placeholder="请输入密码" class="cs-input"
+          ><u-input type="password" v-model="formModel.password" placeholder="请输入密码" class="cs-input b"
         /></u-form-item>
       </u-form>
     </view>
     <view class="px-10 mt-4 text-center">
-      <button class="btn bg-primary text-white text-30" @click="handleLogin">注册</button>
+      <button class="btn bg-primary text-white text-30" @click="handleRegister">注册</button>
       <text class="mt-6 inline-block">我有账号,<text class="color-primary" @click="skip('/pages/login/index')">立即登录</text></text>
     </view>
   </cs-layout>
 </template>
 
 <script lang="ts" setup>
+import { register } from '@/api/common'
+import useForm, { IFormRule } from '@/hooks/useForm'
+import useMessage from '@/hooks/useMessage'
 import { inject, reactive } from 'vue'
-const formModel = reactive<{ username?: string; password?: string }>({})
+const formModel = reactive<{ username?: string; password?: string; name?: string }>({})
 const skip = inject('skip')
-const handleLogin = () => {
-  uni.switchTab({ url: '/pages/index/index' })
+const rules: IFormRule[] = [
+  {
+    prop: 'username',
+    message: '账号不能为空'
+  },
+  {
+    prop: 'name',
+    message: '姓名不能为空'
+  },
+  {
+    prop: 'password',
+    message: '密码不能为空'
+  }
+]
+const { validate } = useForm(formModel, rules)
+const { handleMessage } = useMessage()
+const handleRegister = async () => {
+  if (validate()) {
+    const { success, message } = await register(formModel)
+    handleMessage(success, message, () => {
+      uni.$u.toast('注册成功，请开始登录吧')
+      setTimeout(() => {
+        uni.redirectTo({ url: '/pages/login/index' })
+      }, 1000)
+    })
+  }
 }
 </script>
 
