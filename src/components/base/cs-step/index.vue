@@ -1,7 +1,9 @@
 <template>
   <view class="cs-step">
     <slot name="prefix"></slot>
-    <view class="line" :class="{ isActive, isActiveLine, isLast }"></view>
+    <view class="line-box">
+      <view class="line" :class="{ isActive, isActiveLine, isLast }"></view>
+    </view>
     <slot></slot>
   </view>
 </template>
@@ -30,6 +32,7 @@ const setIndex = (val: number) => {
 }
 
 const stepsCount = computed(() => parent.steps.value.length)
+
 const isLast = computed(() => {
   return currentInstance?.uid && currentInstance?.uid === parent.steps.value[stepsCount.value - 1]?.uid
 })
@@ -54,46 +57,50 @@ parent.steps.value = [...parent.steps.value, stepItemState]
   position: relative;
   display: flex;
   align-items: center;
-  background-color: rgba(128, 128, 128, 0.062);
-  .line {
-    position: relative;
+  .line-box {
     align-self: stretch;
     padding: 0 20rpx;
-    &::before {
-      content: '';
+    .line {
       position: absolute;
-      left: 50%;
-      top: 50%;
-      height: 18rpx;
-      width: 18rpx;
-      background-color: #ddd;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-    }
-    &::after {
-      position: absolute;
-      content: '';
-      left: 50%;
-      height: 100%;
-      width: 4rpx;
-      background-color: #ddd;
-      transform: translate(-50%, 50%);
-      opacity: 1;
-    }
-    &.isLast {
-      &::after {
-        opacity: 0;
-      }
-    }
-    &.isActive {
+      top: 0;
+      bottom: 0;
+      // height: 100%;
       &::before {
-        background-color: #2f88ff;
+        position: absolute;
+        content: '';
+        left: 50%;
+        top: 50%;
+        height: 18rpx;
+        width: 18rpx;
+        background-color: #ddd;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
       }
-    }
-    &.isActiveLine {
       &::after {
-        background-color: #2f88ff;
+        position: absolute;
+        content: '';
+        left: 50%;
+        height: 100%;
+        width: 4rpx;
+        background-color: #ddd;
+        transform: translate(-50%, 50%);
+        opacity: 1;
+      }
+      &.isLast {
+        &::after {
+          opacity: 0;
+        }
+      }
+      &.isActive {
+        &::before {
+          background-color: #2f88ff;
+        }
+      }
+      &.isActiveLine {
+        &::after {
+          background-color: #2f88ff;
+        }
       }
     }
   }
