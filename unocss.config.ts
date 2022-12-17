@@ -18,7 +18,8 @@ export default defineConfig({
       'btn-primary': 'bg-blue-700 text-white',
       'btn-primary-2': 'bg-blue-1 text-gray',
       'color-primary': 'color-blue-700',
-      'bd-gray': 'b b-gray-3'
+      'bd-gray': 'b b-gray-3',
+      circle: 'b-rd-50%'
     }
   ],
 

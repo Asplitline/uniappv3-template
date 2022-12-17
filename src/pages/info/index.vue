@@ -22,7 +22,7 @@
         </view>
         <view class="nav-item">
           <image src="@/static/icons/logout.png" class="img"></image>
-          <text class="txt">退出登录</text>
+          <text class="txt" @click="handleLogout">退出登录</text>
         </view>
       </view>
     </view>
@@ -41,6 +41,9 @@
 <script lang="ts" setup>
 import { inject } from 'vue'
 const skip = inject('skip')
+const handleLogout = () => {
+  uni.redirectTo({ url: '/pages/login/index' })
+}
 </script>
 
 <style lang="scss" scoped>
