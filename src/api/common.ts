@@ -13,3 +13,7 @@ export function register(body: any) {
 export function login(data: any) {
   return request(`/user/back/login?${obj2Query(data)}`, { method: 'POST' })
 }
+
+export function getStatistic() {
+  return request(`/apiJoiningTheParty/statistics`, {}) as Promise<IResponseData>
+}

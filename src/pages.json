@@ -15,6 +15,13 @@
         "navigationStyle": "custom"
       }
     },
+    {
+      "path": "pages/index/check-info",
+      "style": {
+        "navigationBarTitleText": "uni-app",
+        "navigationStyle": "custom"
+      }
+    },
 
     {
       "path": "pages/login/index",
@@ -59,6 +66,13 @@
       }
     },
     {
+      "path": "pages/info/my-comment",
+      "style": {
+        "navigationBarTitleText": "info",
+        "navigationStyle": "custom"
+      }
+    },
+    {
       "path": "pages/info/show-info",
       "style": {
         "navigationBarTitleText": "uni-app",
@@ -76,6 +90,13 @@
       "path": "pages/info/modify-info",
       "style": {
         "navigationBarTitleText": "modify-info",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/info/statistic",
+      "style": {
+        "navigationBarTitleText": "statistic",
         "navigationStyle": "custom"
       }
     }

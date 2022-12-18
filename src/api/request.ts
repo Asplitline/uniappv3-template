@@ -1,5 +1,5 @@
 const isDev = true
-export const requestUrl = isDev ? '/api' : 'http://localhost:8090'
+export const requestUrl = isDev ? '/api' : 'http://192.168.31.244:8090'
 
 type REQUEST_TYPE = 'POST' | 'OPTIONS' | 'GET' | 'HEAD' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT' | undefined
 export interface IResponseData {

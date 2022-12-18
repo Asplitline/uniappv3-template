@@ -20,18 +20,22 @@
           <image src="@/static/icons/pwd.png" class="img"></image>
           <text class="txt">修改密码</text>
         </view>
-        <view class="nav-item">
+        <view class="nav-item" @click="handleLogout">
           <image src="@/static/icons/logout.png" class="img"></image>
-          <text class="txt" @click="handleLogout">退出登录</text>
+          <text class="txt">退出登录</text>
         </view>
       </view>
     </view>
     <view class="flex flex-col mt-4">
       <text class="mb-2 text-32 nav-title">其他</text>
       <view class="nav-list bg-white flex shadow b-rd-3">
-        <view class="nav-item">
+        <view class="nav-item" @click="skip('/pages/info/my-comment')">
+          <image src="@/static/icons/more.png" class="img"></image>
+          <text class="txt">我的评论</text>
+        </view>
+        <view class="nav-item" @click="skip('/pages/info/statistic')">
           <image src="@/static/icons/process.png" class="img"></image>
-          <text class="txt">当前进度</text>
+          <text class="txt">数据统计</text>
         </view>
       </view>
     </view>

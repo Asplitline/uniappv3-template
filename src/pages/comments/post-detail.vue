@@ -4,7 +4,7 @@
       <template #left></template>
     </pcs-navbar>
     <view class="pb-12.5">
-      <view class="post-box px-2 py-4">
+      <view class="post-box py-4">
         <text class="post-title text-34 font-700">{{ currentPost.title }}</text>
         <view class="post-meta flex mt-4">
           <!-- <view class="flex items-center w"> -->
@@ -26,29 +26,27 @@
       <view class="comment-box">
         <view class="comment-header flex justify-between items-center">
           <text class="text-34 font-700">全部评论 ({{ currentPost.replyNum || commentList.length }})</text>
-          <!-- <view class="flex items-center text-gray">
-            <text class="text-blue">最新</text>
-            <text class="w-2 h-20 bg-gray mx-2"></text>
-            <text class="">最早</text>
-          </view> -->
         </view>
         <view class="comment-list py-4">
-          <view class="comment-item flex mb-3" v-for="comment in commentList" :key="comment.id">
-            <view class="avatar pr-3">
-              <image class="w60 h60 b-rd-50%" :src="img(comment.user?.url, 'avatar')"></image>
-            </view>
-            <view class="content flex-col flex flex-1 mr-2">
-              <view class="flex mb-2">
-                <view class="flex flex-col justify-between">
-                  <text class="text-28 font-500">{{ comment.user?.name || 'admin' }}</text>
-                  <text class="text-24 text-gray-400 mt-1">{{ timeAgo(comment.createTime) }}</text>
+          <template v-if="!isEmpty(commentList)">
+            <view class="comment-item flex mb-3" v-for="comment in commentList" :key="comment.id">
+              <view class="avatar pr-3">
+                <image class="w60 h60 b-rd-50%" :src="img(comment.user?.url, 'avatar')"></image>
+              </view>
+              <view class="content flex-col flex flex-1 mr-2">
+                <view class="flex mb-2">
+                  <view class="flex flex-col justify-between">
+                    <text class="text-28 font-500">{{ comment.user?.name || 'admin' }}</text>
+                    <text class="text-24 text-gray-400 mt-1">{{ timeAgo(comment.createTime) }}</text>
+                  </view>
+                </view>
+                <view class="lh-loose p-2 bg-gray-1 w100%">
+                  {{ comment.content }}
                 </view>
               </view>
-              <view class="lh-loose p-2 bg-gray-1 w100%">
-                {{ comment.content }}
-              </view>
             </view>
-          </view>
+          </template>
+          <u-empty text="暂无评论" class="mt-4!" v-else></u-empty>
         </view>
       </view>
       <view class="cs-footer py-2 px-2 flex b-t b-t-gray-200">
