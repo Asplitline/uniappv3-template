@@ -23,7 +23,7 @@ export default (
   return new Promise((resolve, reject) => {
     if (showLoading) {
       uni.showLoading({
-        title: '请求中...'
+        title: '加载中...'
       })
     }
     // const token = uni.getStorageSync('token')
