@@ -1,11 +1,15 @@
-import { getUserById } from '@/api/user'
+import { getAllUser, getUserById } from '@/api/user'
 import CacheStorage from '@/utils/cache'
 import { isEmpty } from '@/utils/tools'
 import { defineStore } from 'pinia'
 
 export default defineStore('user', {
-  state: () => ({ userInfo: CacheStorage.getItem('userInfo', {}) }),
-  getters: {},
+  state: () => ({ userInfo: CacheStorage.getItem('userInfo', {}), userList: [] }),
+  getters: {
+    getUserById(state) {
+      return (id: string) => state.userList?.find((user: { id: string }) => user.id === id)
+    }
+  },
   actions: {
     setUserInfo(payload: any) {
       this.userInfo = payload
@@ -17,6 +21,10 @@ export default defineStore('user', {
       if (success) {
         this.setUserInfo(data)
       }
+    },
+    async fetchAllUser() {
+      const { list } = await getAllUser()
+      this.userList = list
     }
   }
 })

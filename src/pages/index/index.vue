@@ -3,12 +3,12 @@
     <view class="px-3 flex items-center bg-white py-3 b-b-1 b-gray-100">
       <image class="w-80 h-80 b-rd-50%" :src="img(userStore.userInfo?.url, 'avatar')"></image>
       <view class="flex flex-col flex-1 ml-2">
-        <text class="text-32">{{ userStore.userInfo.name }}</text>
+        <text class="text-32 inline-block mb-1">{{ userStore.userInfo.name }}</text>
         <u-tag text="学生" class="w-90 text-center p-1!" v-if="userStore.userInfo.level == 0" />
         <u-tag text="老师" class="w-90 text-center p-1!" type="success" v-else-if="userStore.userInfo.level == 1"></u-tag>
         <u-tag text="管理员" class="w-90 text-center p-1!" type="error" v-else-if="userStore.userInfo.level == 2"></u-tag>
       </view>
-      <image src="@/static/icons/more.png" class="w-54 h-54"></image>
+      <image src="@/static/icons/more.png" class="w-54 h-54" @click="skip('/pages/info/show-info')"></image>
     </view>
     <view class="py-4 bg-white mx-1 mt-4 b-rd-2 b-t b b-gray-100">
       <text class="text-32 inline-block mb-2 w100% text-center">入党流程</text>

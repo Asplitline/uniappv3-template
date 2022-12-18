@@ -1,65 +1,51 @@
 <template>
   <cs-layout>
     <pcs-navbar>
-      <template #left>12321</template>
+      <template #left></template>
     </pcs-navbar>
     <view class="pb-12.5">
       <view class="post-box px-2 py-4">
-        <text class="post-title text-34 font-700">Numquam nisi facere aut et recusandae.</text>
-        <view class="post-meta flex justify-between mt-4">
-          <view class="flex items-center">
-            <image
-              class="w-80 h-80 b-rd-50%"
-              src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/711.jpg"
-            ></image>
-            <text class="text-gray-500 text-30 ml-2">molestiae</text>
+        <text class="post-title text-34 font-700">{{ currentPost.title }}</text>
+        <view class="post-meta flex mt-4">
+          <!-- <view class="flex items-center w"> -->
+          <image class="w-80 h-80 b-rd-50% flex-shrink-0" :src="img(currentPost.user?.url, 'avatar')"></image>
+          <view class="flex flex-col flex-1 ml-2">
+            <text class="text-gray-500 text-30 break-all">{{ currentPost.user?.name }}</text>
+            <view class="flex items-center text-24 text-gray-400 flex-shrink-0 mt-2">
+              <text>{{ formatDate(currentPost.createTime) }}</text>
+              <view class="w-2 h-20 bg-gray mx-2"></view>
+              <text>{{ currentPost.replyNum || commentList.length }} 条评论</text>
+            </view>
           </view>
-          <view class="flex items-center text-24 text-gray-400">
-            <text>21312次浏览</text>
-            <view class="w-2 h-20 bg-gray mx-2"></view>
-            <text>2020/06/11</text>
-          </view>
+          <!-- </view> -->
         </view>
-        <view class="post-content py-4 lh-relaxed">
-          Omnis aspernatur incidunt repellat quas ullam ipsam aut a minima. Sed itaque vel. Pariatur nisi ipsam voluptas. Qui ex quae quo
-          est ratione deserunt id et. Voluptates quis ut adipisci officia aut assumenda voluptatibus. At nisi ratione dolore ipsum.
-          Consectetur animi assumenda omnis dicta. Dignissimos odit quasi optio ut. Animi est soluta. Eligendi sint velit vitae et ea.
-          Reprehenderit saepe tempora dolore a saepe et ad et. Aut officia laboriosam doloribus ut. Ad eum optio vel nemo doloremque.
-          Nostrum reiciendis eaque esse. <br />
-          Omnis aspernatur incidunt repellat quas ullam ipsam aut a minima. Sed itaque vel. Pariatur nisi ipsam voluptas. Qui ex quae quo
-          est ratione deserunt id et. Voluptates quis ut adipisci officia aut assumenda voluptatibus. At nisi ratione dolore ipsum.
-          Consectetur animi assumenda omnis dicta. Dignissimos odit quasi optio ut. Animi est soluta. Eligendi sint velit vitae et ea.
-          Reprehenderit saepe tempora dolore a saepe et ad et. Aut officia laboriosam doloribus ut. Ad eum optio vel nemo doloremque.
-          Nostrum reiciendis eaque esse.
+        <view class="post-content py-4 px-2 b b-gray-2 b-rd-1 mt3 lh-relaxed bg-white">
+          <rich-text :nodes="currentPost.htmlContent"> </rich-text>
         </view>
       </view>
       <view class="comment-box">
         <view class="comment-header flex justify-between items-center">
-          <text class="text-34 font-700">全部评论</text>
-          <view class="flex items-center text-gray">
+          <text class="text-34 font-700">全部评论 ({{ currentPost.replyNum || commentList.length }})</text>
+          <!-- <view class="flex items-center text-gray">
             <text class="text-blue">最新</text>
             <text class="w-2 h-20 bg-gray mx-2"></text>
             <text class="">最早</text>
-          </view>
+          </view> -->
         </view>
         <view class="comment-list py-4">
-          <view class="comment-item flex">
+          <view class="comment-item flex mb-3" v-for="comment in commentList" :key="comment.id">
             <view class="avatar pr-3">
-              <image
-                class="w90 h90 b-rd-50%"
-                src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1229.jpg"
-              ></image>
+              <image class="w60 h60 b-rd-50%" :src="img(comment.user?.url, 'avatar')"></image>
             </view>
-            <view class="content flex-col flex">
+            <view class="content flex-col flex flex-1 mr-2">
               <view class="flex mb-2">
-                <view class="flex flex-col h-90 justify-between">
-                  <text class="text-30 font-500">doloribus</text>
-                  <text class="text-24 text-gray-400">2222/01/01</text>
+                <view class="flex flex-col justify-between">
+                  <text class="text-28 font-500">{{ comment.user?.name || 'admin' }}</text>
+                  <text class="text-24 text-gray-400 mt-1">{{ timeAgo(comment.createTime) }}</text>
                 </view>
               </view>
-              <view class="lh-loose">
-                Enim sunt occaecati qui voluptatum voluptatem recusandae expedita. Molestias rerum placeat nisi illum beatae accusamus. Est
-                praesentium aut temporibus quis repellat. Non sunt aut soluta amet molestiae earum qui quis sint. Quas eveniet voluptatum.
+              <view class="lh-loose p-2 bg-gray-1 w100%">
+                {{ comment.content }}
               </view>
             </view>
           </view>
@@ -73,10 +59,10 @@
       </view>
       <u-popup v-model="showPopup" mode="bottom" border-radius="16">
         <view class="px-3 py-4">
-          <u-input class="b b-rd-2 px-2! py-1!" type="textarea" placeholder="说点什么吧"></u-input>
+          <u-input v-model="commentVal" class="b b-rd-2 px-2! py-1!" type="textarea" placeholder="说点什么吧"></u-input>
           <view class="flex justify-end mt-2">
             <button class="btn-sm btn-primary-2 w-110 mx-0" @click="closePopup">关闭</button>
-            <button class="btn-sm btn-primary w-110 mx-0 ml-2">评论</button>
+            <button class="btn-sm btn-primary w-110 mx-0 ml-2" @click="commentPost">评论</button>
           </view>
         </view>
       </u-popup>
@@ -85,15 +71,77 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { IPostDetail, addComment, getPostById } from '@/api/post'
+import useMessage from '@/hooks/useMessage'
+import { usePostStore, useUserStore } from '@/store'
+import { formatDate, isEmpty, timeAgo } from '@/utils/tools'
+import { onLoad } from '@dcloudio/uni-app'
+import { inject, onMounted, ref } from 'vue'
 
+const currentPost = ref<Partial<IPostDetail>>({})
 const showPopup = ref(false)
+const img = inject('img')
+const commentVal = ref('')
+const userStore = useUserStore()
+const commentList = ref([])
+const pid = ref('')
 const openPopup = () => {
+  if (isEmpty(userStore.userInfo)) {
+    return uni.$u.toast('请先登录')
+  }
   showPopup.value = true
 }
 const closePopup = () => {
   showPopup.value = false
 }
+
+const { fetchAllUser } = useUserStore()
+const postStore = usePostStore()
+const fetchPostDetail = async () => {
+  const { data } = await getPostById(pid.value)
+  const user = userStore.getUserById(data.authorId)
+  currentPost.value = { ...data, user }
+  await fetchCommentList()
+}
+
+const fetchCommentList = async () => {
+  await postStore.fetchAllComment()
+  const list = postStore.getCommentByPostId(pid.value)
+  commentList.value = list.map((i: { userId: string }) => {
+    const user = userStore.getUserById(i.userId)
+    return { ...i, user }
+  })
+}
+
+const { handleMessage } = useMessage()
+const commentPost = async () => {
+  if (isEmpty(commentVal.value)) {
+    return uni.$u.toast('评论不能为空')
+  }
+  const { success, message } = await addComment({
+    postId: currentPost.value.id,
+    createTime: Date.now(),
+    content: commentVal.value,
+    userId: userStore.userInfo.id
+  })
+  handleMessage(success, message, () => {
+    // uni.$u.toast('评论成功')
+    setTimeout(() => {
+      commentVal.value = ''
+      fetchCommentList()
+      closePopup()
+    }, 100)
+  })
+
+  console.log('commentVal.value :', commentVal.value)
+}
+onLoad((payload: any) => {
+  pid.value = payload.id
+})
+onMounted(async () => {
+  await fetchAllUser()
+  fetchPostDetail()
+})
 </script>
 
 <style lang="scss" scoped>

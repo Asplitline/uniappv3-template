@@ -2,7 +2,7 @@
   <cs-layout class="info" hasTabbar>
     <view class="flex justify-center"> </view>
     <view class="flex items-center justify-between mt-3">
-      <image :src="img(userInfo.url, 'avatar')" class="w120 h120 circle"></image>
+      <image :src="img(userInfo.url, 'avatar')" class="w100 h100 circle"></image>
       <view class="flex flex-1 flex-col justify-evenly self-stretch ml-1.5">
         <text class="text-34 font-400">{{ userInfo.name }}</text>
         <text class="text-gray">{{ userInfo.description || '暂无简介' }}</text>
@@ -41,6 +41,8 @@
 <script lang="ts" setup>
 import { useUserStore } from '@/store'
 import CacheStorage from '@/utils/cache'
+import { isEmpty } from '@/utils/tools'
+import { onShow } from '@dcloudio/uni-app'
 import { inject, toRefs } from 'vue'
 const skip = inject('skip')
 const userStore = useUserStore()
@@ -51,6 +53,13 @@ const handleLogout = () => {
   userStore.$reset()
   uni.redirectTo({ url: '/pages/login/index' })
 }
+
+onShow(() => {
+  if (isEmpty(userInfo.value)) {
+    uni.$u.toast('请先登录')
+    uni.redirectTo({ url: '/pages/login/index' })
+  }
+})
 </script>
 
 <style lang="scss" scoped>

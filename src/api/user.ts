@@ -1,6 +1,10 @@
 import request, { IResponseData } from '@/api/request'
 import { obj2Query } from '@/utils/tools'
 
+export function getAllUser() {
+  return request('/user/getUser', { data: { size: 999 } }) as Promise<IResponseData>
+}
+
 export function editUser(body: any) {
   return request('/user/updateUser', { method: 'PUT', data: body }) as Promise<IResponseData>
 }
