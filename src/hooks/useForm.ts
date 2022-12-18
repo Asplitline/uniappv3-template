@@ -5,6 +5,7 @@ export interface IFormRule {
 }
 
 export default function useForm(model: any, rules?: IFormRule[]) {
+  // todo custom validate
   const validate = () => {
     if (isEmpty(rules)) return true
     const invokeRule: IFormRule | undefined = rules?.find((rule: IFormRule) => {

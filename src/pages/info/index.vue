@@ -2,19 +2,19 @@
   <cs-layout class="info" hasTabbar>
     <view class="flex justify-center"> </view>
     <view class="flex items-center justify-between mt-3">
-      <u-image width="120" height="120" shape="circle"></u-image>
+      <image :src="img(userInfo.url, 'avatar')" class="w120 h120 circle"></image>
       <view class="flex flex-1 flex-col justify-evenly self-stretch ml-1.5">
-        <text class="text-34 font-400">你哈实打实的</text>
-        <text class="text-gray">暂无简介</text>
+        <text class="text-34 font-400">{{ userInfo.name }}</text>
+        <text class="text-gray">{{ userInfo.description || '暂无简介' }}</text>
       </view>
-      <button class="edit-btn text-white text-24">修改资料</button>
+      <button class="edit-btn text-white text-24" @click="skip('/pages/info/modify-info')">修改资料</button>
     </view>
     <view class="flex flex-col mt-4">
       <text class="mb-2 text-32 nav-title">基础</text>
       <view class="nav-list bg-white flex shadow b-rd-3">
-        <view class="nav-item" @click="skip('/pages/info/modify-info')">
+        <view class="nav-item" @click="skip('/pages/info/show-info')">
           <image src="@/static/icons/info.png" class="img"></image>
-          <text class="txt">个人资料</text>
+          <text class="txt">个人信息</text>
         </view>
         <view class="nav-item" @click="skip('/pages/info/modify-pwd')">
           <image src="@/static/icons/pwd.png" class="img"></image>
@@ -41,9 +41,11 @@
 <script lang="ts" setup>
 import { useUserStore } from '@/store'
 import CacheStorage from '@/utils/cache'
-import { inject } from 'vue'
+import { inject, toRefs } from 'vue'
 const skip = inject('skip')
 const userStore = useUserStore()
+const { userInfo } = toRefs(userStore)
+const img = inject('img')
 const handleLogout = () => {
   CacheStorage.clearItem()
   userStore.$reset()

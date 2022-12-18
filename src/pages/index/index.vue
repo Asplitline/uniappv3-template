@@ -1,11 +1,13 @@
 <template>
   <cs-layout class="content" :hasPadding="false" hasTabbar>
     <view class="px-3 flex items-center bg-white py-3 b-b-1 b-gray-100">
-      <image
-        class="w-80 h-80 b-rd-50%"
-        src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/522.jpg"
-      ></image>
-      <text class="text-32 flex-1 ml-2">用户A</text>
+      <image class="w-80 h-80 b-rd-50%" :src="img(userStore.userInfo?.url, 'avatar')"></image>
+      <view class="flex flex-col flex-1 ml-2">
+        <text class="text-32">{{ userStore.userInfo.name }}</text>
+        <u-tag text="学生" class="w-90 text-center p-1!" v-if="userStore.userInfo.level == 0" />
+        <u-tag text="老师" class="w-90 text-center p-1!" type="success" v-else-if="userStore.userInfo.level == 1"></u-tag>
+        <u-tag text="管理员" class="w-90 text-center p-1!" type="error" v-else-if="userStore.userInfo.level == 2"></u-tag>
+      </view>
       <image src="@/static/icons/more.png" class="w-54 h-54"></image>
     </view>
     <view class="py-4 bg-white mx-1 mt-4 b-rd-2 b-t b b-gray-100">
@@ -49,13 +51,16 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, inject, onMounted } from 'vue'
-import { infoList } from '@/utils/static'
 import { useUserStore } from '@/store'
+import { infoList } from '@/utils/static'
+import { inject, onMounted, reactive, ref } from 'vue'
 const active = ref(0)
 const isUpload = ref(false)
 const authList = reactive(infoList)
 const skip = inject('skip')
+const userStore = useUserStore()
+
+const img = inject('img')
 const checkStatus = (idx: number) => {
   return idx >= active.value
 }
@@ -72,10 +77,7 @@ const next = () => {
     active.value = 0
   }
 }
-const userStore = useUserStore()
-onMounted(() => {
-  console.log('userStore.userInfo :', userStore.userInfo)
-})
+onMounted(() => {})
 </script>
 
 <style lang="scss" scoped></style>

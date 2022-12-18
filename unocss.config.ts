@@ -16,7 +16,7 @@ export default defineConfig({
       'btn-sm': 'btn text-24 b-rd-4 h-50',
       'bg-primary': 'bg-blue-700',
       'btn-primary': 'bg-blue-700 text-white',
-      'btn-primary-2': 'bg-blue-1 text-gray',
+      'btn-primary-2': 'bg-blue-1 text-gray-5',
       'color-primary': 'color-blue-700',
       'bd-gray': 'b b-gray-3',
       circle: 'b-rd-50%'

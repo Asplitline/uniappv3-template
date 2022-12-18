@@ -1,3 +1,8 @@
+export const defaultAvatar = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+export const defaultImg = 'https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png'
+export const uploadUrl = 'http://127.0.0.1:8090/file/uploadFile'
+export const prefixUrl = 'http://localhost:8090/'
+
 export const infoList = [
   {
     text: '1.申请入党阶段',

@@ -15,6 +15,7 @@
         "navigationStyle": "custom"
       }
     },
+
     {
       "path": "pages/login/index",
       "style": {
@@ -54,6 +55,13 @@
       "path": "pages/info/index",
       "style": {
         "navigationBarTitleText": "info",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/info/show-info",
+      "style": {
+        "navigationBarTitleText": "uni-app",
         "navigationStyle": "custom"
       }
     },
