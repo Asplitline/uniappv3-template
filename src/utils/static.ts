@@ -3,6 +3,16 @@ export const defaultImg = 'https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a2568
 export const uploadUrl = 'http://127.0.0.1:8090/file/uploadFile'
 export const prefixUrl = 'http://localhost:8090/'
 
+export const statusInfo = {
+  0: {
+    text: '待审核',
+    type: 'primary'
+  },
+  1: {
+    text: '已通过',
+    type: 'success'
+  }
+}
 export const infoList = [
   {
     text: '1.申请入党阶段',
