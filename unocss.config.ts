@@ -19,7 +19,8 @@ export default defineConfig({
       'btn-primary-2': 'bg-blue-1 text-gray-5',
       'color-primary': 'color-blue-700',
       'bd-gray': 'b b-gray-3',
-      circle: 'b-rd-50%'
+      circle: 'b-rd-50%',
+      card: 'bg-white b b-gray-2 p-2  b-rd-2'
     }
   ],
 

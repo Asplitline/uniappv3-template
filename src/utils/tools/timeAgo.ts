@@ -21,7 +21,6 @@ export default function (date) {
   Object.keys(base).forEach((key) => {
     end[key] = fl(diff / base[key])
   })
-  console.log(end)
   if (end.year > 0) {
     return `${end.year}年前`
   } else if (end.month > 0) {

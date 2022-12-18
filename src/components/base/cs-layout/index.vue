@@ -24,7 +24,8 @@ defineProps({
 <style lang="scss" scoped>
 .cs-layout {
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   padding-top: var(--status-bar-height);
   background-color: #fafafa;
   &.hasPadding {
@@ -32,7 +33,7 @@ defineProps({
     padding-right: 20rpx;
   }
   &.hasTabbar {
-    height: calc(100vh - 100rpx);
+    min-height: calc(100vh - 100rpx);
   }
 
   &.hasNavbar {
