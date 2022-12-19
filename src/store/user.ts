@@ -8,6 +8,9 @@ export default defineStore('user', {
   getters: {
     getUserById(state) {
       return (id: string) => state.userList?.find((user: { id: string }) => user.id === id)
+    },
+    isStudent(state) {
+      return state.userInfo.level == 0
     }
   },
   actions: {

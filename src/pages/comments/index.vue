@@ -31,6 +31,7 @@ import { getAllPost } from '@/api/post'
 import useMessage from '@/hooks/useMessage'
 import { useUserStore } from '@/store'
 import { isEmpty, timeAgo } from '@/utils/tools'
+import { onShow } from '@dcloudio/uni-app'
 import { computed, inject, onMounted, ref } from 'vue'
 
 const current = ref(0)
@@ -55,6 +56,8 @@ const list = ref([
   }
 ])
 
+const userStore = useUserStore()
+
 const postList = ref<Array<{ user?: any; id: string; title: string; replyNum: number; createTime: string }>>([])
 const { fetchAllUser, getUserById } = useUserStore()
 const { handleMessage } = useMessage()
@@ -72,6 +75,13 @@ const fetchPost = async () => {
     console.log('postList.value : ', postList.value)
   })
 }
+onShow(() => {
+  if (isEmpty(userStore.userInfo)) {
+    uni.$u.toast('请先登录')
+    uni.redirectTo({ url: '/pages/login/index' })
+  }
+})
+
 onMounted(() => {
   fetchAllUser()
   fetchPost()

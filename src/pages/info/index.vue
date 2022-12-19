@@ -33,7 +33,7 @@
           <image src="@/static/icons/more.png" class="img"></image>
           <text class="txt">我的评论</text>
         </view>
-        <view class="nav-item" @click="skip('/pages/info/statistic')">
+        <view class="nav-item" v-if="!userStore.isStudent" @click="skip('/pages/info/statistic')">
           <image src="@/static/icons/process.png" class="img"></image>
           <text class="txt">数据统计</text>
         </view>

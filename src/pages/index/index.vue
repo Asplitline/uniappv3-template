@@ -20,10 +20,18 @@ import { useUserStore } from '@/store'
 import { computed, inject } from 'vue'
 import Student from './student.vue'
 import Teacher from './teacher'
+import { onShow } from '@dcloudio/uni-app'
+import { isEmpty } from '@/utils/tools'
 const skip = inject('skip')
 const userStore = useUserStore()
 const img = inject('img')
 
+onShow(() => {
+  if (isEmpty(userStore.userInfo)) {
+    uni.$u.toast('请先登录')
+    uni.redirectTo({ url: '/pages/login/index' })
+  }
+})
 const isStudent = computed(() => {
   return userStore.userInfo.level == 0
 })
