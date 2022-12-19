@@ -23,7 +23,7 @@ const defaultImgs = {
 const img = (url: any, def = 'image') => {
   const supportKeys = Reflect.ownKeys(defaultImgs)
   if (isEmpty(url)) {
-    if (supportKeys.includes(def)) return defaultImgs['image']
+    if (supportKeys.includes(def)) return defaultImgs[def as keyof typeof defaultImgs]
     return def
   } else {
     return prefixUrl + url
