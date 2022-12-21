@@ -1,5 +1,10 @@
 lockfileVersion: 5.4
 
+patchedDependencies:
+  vk-uview-ui@1.4.4:
+    hash: 3ddyp4v7kr5cazzaqqgbz3xa2i
+    path: patches/vk-uview-ui@1.4.4.patch
+
 specifiers:
   '@commitlint/cli': ^17.3.0
   '@commitlint/config-conventional': ^17.3.0
@@ -46,7 +51,7 @@ dependencies:
   '@dcloudio/uni-quickapp-webview': 3.0.0-alpha-3061020221121002_vue@3.2.45
   pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
   sass: 1.56.2
-  vk-uview-ui: 1.4.4
+  vk-uview-ui: 1.4.4_3ddyp4v7kr5cazzaqqgbz3xa2i
   vue: 3.2.45
   vue-i18n: 9.2.2_vue@3.2.45
 
@@ -3953,10 +3958,11 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vk-uview-ui/1.4.4:
+  /vk-uview-ui/1.4.4_3ddyp4v7kr5cazzaqqgbz3xa2i:
     resolution: {integrity: sha512-6IkQqDPEakzj095IoEpuhgQ6FiR/htft0Lg//xt4aN+/UDdAQsGg9Zn2v4mmhTl5Xk75jg8dRjFle0n2dtoIlA==}
     engines: {HBuilderX: ^3.1.0}
     dev: false
+    patched: true
 
   /vue-demi/0.13.11_vue@3.2.45:
     resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
