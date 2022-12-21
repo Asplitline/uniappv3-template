@@ -1,0 +1,37 @@
+diff --git a/components/u-radio/u-radio.vue b/components/u-radio/u-radio.vue
+index a6661028367b773a28597db0f45be1f96d274b92..7ce5d0807f3f9dda8bd68476e04960db6595f41f 100644
+--- a/components/u-radio/u-radio.vue
++++ b/components/u-radio/u-radio.vue
+@@ -56,7 +56,7 @@ export default {
+ 		// 是否禁止点击提示语选中复选框
+ 		labelDisabled: {
+ 			type: [String, Boolean],
+-			default: ""
++			default: "",
+ 		},
+ 		// 选中状态下的颜色，如设置此值，将会覆盖parent的activeColor值
+ 		activeColor: {
+@@ -88,7 +88,8 @@ export default {
+ 				width: null,
+ 				height: null,
+ 				value: null,
+-				wrap: null
++				wrap: null,
++				modelValue: null
+ 			}
+ 		};
+ 	},
+diff --git a/components/u-radio-group/u-radio-group.vue b/components/u-radio-group/u-radio-group.vue
+index c4fb4a1c1b35ff518d865880472820fc829394ca..756788a6fc4dc4c6f6948bff3701eeb54c864d2c 100644
+--- a/components/u-radio-group/u-radio-group.vue
++++ b/components/u-radio-group/u-radio-group.vue
+@@ -130,7 +130,8 @@ export default {
+ 				this.shape,
+ 				this.iconSize,
+ 				this.width,
+-				this.wrap
++				this.wrap,
++				this.modelValue
+ 			];
+ 		}
+ 	},

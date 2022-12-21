@@ -75,6 +75,9 @@
       "ignoreMissing": [
         "@dcloudio/vite-plugin-uni"
       ]
+    },
+    "patchedDependencies": {
+      "vk-uview-ui@1.4.4": "patches/vk-uview-ui@1.4.4.patch"
     }
   }
 }
