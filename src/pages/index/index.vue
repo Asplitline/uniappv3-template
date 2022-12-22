@@ -10,6 +10,7 @@
       </view>
       <image src="@/static/icons/id-card.png" class="w-54 h-54" @click="skip('/pages/info/show-info')"></image>
     </view>
+    <cs-upload ref="upload"></cs-upload>
     <u-swiper :list="list"></u-swiper>
     <Component :is="isStudent ? Student : Teacher"></Component>
   </cs-layout>
@@ -28,6 +29,8 @@ const skip = inject('skip')
 const userStore = useUserStore()
 const img = inject('img')
 const list = ref([])
+const upload = ref()
+
 onShow(() => {
   if (isEmpty(userStore.userInfo)) {
     uni.$u.toast('请先登录')
@@ -46,6 +49,10 @@ const fetchData = async () => {
 
 onMounted(() => {
   fetchData()
+  console.log('upload :', upload.value)
+  upload.value.upload({
+    url: '123'
+  })
 })
 </script>
 
