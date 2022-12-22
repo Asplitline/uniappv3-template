@@ -1,4 +1,4 @@
-import request, { IResponseData } from '@/api/request'
+import request, { IRequestQuery, IResponseData } from '@/api/request'
 import { obj2Query } from '@/utils/tools'
 
 // export function login() {
@@ -16,4 +16,8 @@ export function login(data: any) {
 
 export function getStatistic() {
   return request(`/apiJoiningTheParty/statistics`, {}) as Promise<IResponseData>
+}
+
+export function getCarouselList(data: IRequestQuery) {
+  return request(`/apiCarousel/pageList`, { data }) as Promise<IResponseData>
 }

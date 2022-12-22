@@ -4,9 +4,15 @@ export const requestUrl = isDev ? '/api' : 'http://192.168.31.244:8090'
 type REQUEST_TYPE = 'POST' | 'OPTIONS' | 'GET' | 'HEAD' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT' | undefined
 export interface IResponseData {
   data?: any
+  list?: any
   code: number
   success: boolean
   message: string
+}
+export interface IRequestQuery {
+  page?: number
+  size?: number
+  keyword?: string
 }
 interface RequestOption {
   method?: REQUEST_TYPE

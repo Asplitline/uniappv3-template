@@ -10,22 +10,24 @@
       </view>
       <image src="@/static/icons/id-card.png" class="w-54 h-54" @click="skip('/pages/info/show-info')"></image>
     </view>
-
+    <u-swiper :list="list"></u-swiper>
     <Component :is="isStudent ? Student : Teacher"></Component>
   </cs-layout>
 </template>
 
 <script setup lang="ts">
 import { useUserStore } from '@/store'
-import { computed, inject } from 'vue'
+import { computed, inject, onMounted, ref } from 'vue'
 import Student from './student.vue'
-import Teacher from './teacher'
+import Teacher from './teacher.vue'
 import { onShow } from '@dcloudio/uni-app'
 import { isEmpty } from '@/utils/tools'
+import { getCarouselList } from '@/api/common'
+import { prefixUrl } from '@/utils/static'
 const skip = inject('skip')
 const userStore = useUserStore()
 const img = inject('img')
-
+const list = ref([])
 onShow(() => {
   if (isEmpty(userStore.userInfo)) {
     uni.$u.toast('请先登录')
@@ -34,6 +36,16 @@ onShow(() => {
 })
 const isStudent = computed(() => {
   return userStore.userInfo.level == 0
+})
+
+const fetchData = async () => {
+  const { list: data } = await getCarouselList({ size: 4 })
+
+  list.value = data.map((i: any) => ({ image: prefixUrl + i.url, title: i.title }))
+}
+
+onMounted(() => {
+  fetchData()
 })
 </script>
 
