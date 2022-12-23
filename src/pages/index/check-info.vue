@@ -24,8 +24,8 @@ import { editJoinParty, getJoinPartyById } from '@/api/joinParty'
 import useMessage from '@/hooks/useMessage'
 import { useUserStore } from '@/store'
 import { infoList } from '@/utils/static'
-import { onLoad } from '@dcloudio/uni-app'
-import { computed, inject, onMounted, ref } from 'vue'
+import { onLoad, onShow } from '@dcloudio/uni-app'
+import { computed, inject, ref } from 'vue'
 const currentCheck = ref({})
 const currentInfo = computed(() => infoList.find((i) => i.status === 1))
 const cid = ref('')
@@ -58,7 +58,7 @@ const checkRecord = async () => {
     }, 100)
   })
 }
-onMounted(() => {
+onShow(() => {
   fetchCheckDetail()
 })
 onLoad((payload: any) => {

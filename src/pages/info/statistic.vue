@@ -11,8 +11,9 @@
 <script lang="ts" setup>
 import * as echarts from 'echarts'
 import LEchart from '@/uni_modules/lime-echart_0.6.5/components/l-echart/l-echart.vue'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { getStatistic } from '@/api/common'
+import { onShow } from '@dcloudio/uni-app'
 const chart = ref()
 const newData = ref([])
 const option = ref({
@@ -77,7 +78,7 @@ const fetchStatistic = async () => {
     chart.setOption(option.value)
   })
 }
-onMounted(() => {
+onShow(() => {
   fetchStatistic()
 })
 </script>

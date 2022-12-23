@@ -32,7 +32,8 @@
 <script lang="ts" setup>
 import { usePostStore, useUserStore } from '@/store'
 import { timeAgo } from '@/utils/tools'
-import { inject, onMounted, ref } from 'vue'
+import { onShow } from '@dcloudio/uni-app'
+import { inject, ref } from 'vue'
 
 const img = inject('img')
 const skip = inject('skip')
@@ -51,7 +52,7 @@ const fetchComment = async () => {
   })
   commentList.value = list
 }
-onMounted(() => {
+onShow(() => {
   fetchComment()
 })
 </script>

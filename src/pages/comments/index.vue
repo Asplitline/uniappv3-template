@@ -32,7 +32,7 @@ import useMessage from '@/hooks/useMessage'
 import { useUserStore } from '@/store'
 import { isEmpty, timeAgo } from '@/utils/tools'
 import { onShow } from '@dcloudio/uni-app'
-import { computed, inject, onMounted, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 
 const current = ref(0)
 const skip = inject('skip')
@@ -80,12 +80,10 @@ onShow(() => {
     uni.$u.toast('请先登录')
     uni.redirectTo({ url: '/pages/login/index' })
   }
-})
-
-onMounted(() => {
   fetchAllUser()
   fetchPost()
 })
+
 // const
 </script>
 

@@ -73,8 +73,8 @@ import { IPostDetail, addComment, getPostById } from '@/api/post'
 import useMessage from '@/hooks/useMessage'
 import { usePostStore, useUserStore } from '@/store'
 import { formatDate, isEmpty, timeAgo } from '@/utils/tools'
-import { onLoad } from '@dcloudio/uni-app'
-import { inject, onMounted, ref } from 'vue'
+import { onLoad, onShow } from '@dcloudio/uni-app'
+import { inject, ref } from 'vue'
 
 const currentPost = ref<Partial<IPostDetail>>({})
 const showPopup = ref(false)
@@ -136,7 +136,7 @@ const commentPost = async () => {
 onLoad((payload: any) => {
   pid.value = payload.id
 })
-onMounted(async () => {
+onShow(async () => {
   await fetchAllUser()
   fetchPostDetail()
 })

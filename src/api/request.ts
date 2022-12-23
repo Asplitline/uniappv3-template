@@ -1,5 +1,6 @@
-const isDev = true
-export const requestUrl = isDev ? '/api' : 'http://192.168.31.244:8090'
+const isDev = false
+export const baseUrl = 'http://192.168.136.1:8090'
+export const requestUrl = isDev ? '/api' : baseUrl
 
 type REQUEST_TYPE = 'POST' | 'OPTIONS' | 'GET' | 'HEAD' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT' | undefined
 export interface IResponseData {

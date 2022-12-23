@@ -65,7 +65,8 @@ import useMessage from '@/hooks/useMessage'
 import { useUserStore } from '@/store'
 import { uploadUrl } from '@/utils/static'
 import { deepClone } from '@/utils/tools'
-import { inject, onMounted, reactive, ref, toRefs } from 'vue'
+import { onShow } from '@dcloudio/uni-app'
+import { inject, reactive, ref, toRefs } from 'vue'
 const { updateInfo } = useUserStore()
 const { userInfo } = toRefs(useUserStore())
 console.log('userInfo: ', userInfo)
@@ -108,7 +109,7 @@ const handleModify = async () => {
 const uploadSuccess = (url: string) => {
   formModel.url = url
 }
-onMounted(() => {
+onShow(() => {
   fileList.value = [{ url: img(userInfo.value.url) as string }]
   Object.assign(formModel, deepClone(userInfo.value))
 })

@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { useUserStore } from '@/store'
-import { computed, inject, onMounted, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 import Student from './student.vue'
 import Teacher from './teacher.vue'
 import { onShow } from '@dcloudio/uni-app'
@@ -36,6 +36,7 @@ onShow(() => {
     uni.$u.toast('请先登录')
     uni.redirectTo({ url: '/pages/login/index' })
   }
+  fetchData()
 })
 const isStudent = computed(() => {
   return userStore.userInfo.level == 0
@@ -46,14 +47,6 @@ const fetchData = async () => {
 
   list.value = data.map((i: any) => ({ image: prefixUrl + i.url, title: i.title }))
 }
-
-onMounted(() => {
-  fetchData()
-  console.log('upload :', upload.value)
-  upload.value.upload({
-    url: '123'
-  })
-})
 </script>
 
 <style lang="scss" scoped>

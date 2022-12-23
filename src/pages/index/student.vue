@@ -42,7 +42,8 @@
 import { useJoinPartyStore, useUserStore } from '@/store'
 import { infoList } from '@/utils/static'
 import { formatDate, isEmpty } from '@/utils/tools'
-import { inject, onMounted, reactive, ref } from 'vue'
+import { onShow } from '@dcloudio/uni-app'
+import { inject, reactive, ref } from 'vue'
 const active = ref(0)
 const authList = reactive(infoList)
 const skip = inject('skip')
@@ -79,7 +80,7 @@ const fetchData = async () => {
   recordList.value = joinPartyStore.getJoinPartyById(userStore.userInfo.id)
   initRecordStatus()
 }
-onMounted(() => {
+onShow(() => {
   fetchData()
 })
 </script>

@@ -56,7 +56,8 @@
 import { useJoinPartyStore, useUserStore } from '@/store'
 import { infoList, statusInfo } from '@/utils/static'
 import { formatDate, isEmpty } from '@/utils/tools'
-import { computed, inject, onMounted, ref } from 'vue'
+import { onShow } from '@dcloudio/uni-app'
+import { computed, inject, ref } from 'vue'
 
 const skip = inject('skip')
 const joinPartyStore = useJoinPartyStore()
@@ -86,7 +87,7 @@ const fetchData = async () => {
   })
 }
 
-onMounted(() => {
+onShow(() => {
   fetchData()
 })
 </script>
