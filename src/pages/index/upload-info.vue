@@ -20,7 +20,6 @@
           width="120"
           height="120"
           @on-success="uploadSuccess"
-          upload-text=""
         >
         </u-upload>
         <!-- <text class="text-center">支持上传文件为：doc，docx</text> -->
@@ -48,6 +47,7 @@ const { userInfo } = toRefs(useUserStore())
 console.log('userInfo: ', userInfo)
 const uploadSuccess = (result: string) => {
   console.log('result :', result)
+  console.log('fileList.value :', fileList.value)
   formModel.url = result
 }
 const goBack = () => {

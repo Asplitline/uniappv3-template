@@ -2,7 +2,7 @@
   <view class="py-4 bg-white mx-1 mt-4 b-rd-2 b-t b b-gray-100">
     <text class="text-32 inline-block mb-2 w100% text-center">入党流程</text>
 
-    <u-notice-bar mode="horizontal" class="m2" :list="['恭喜你通过全部考核，成为正式党员']"></u-notice-bar>
+    <u-notice-bar mode="horizontal" class="m2" :list="['恭喜你通过全部考核，成为正式党员']" v-if="active === 5"></u-notice-bar>
 
     <cs-steps :active="active" class="px-1">
       <cs-step v-for="(i, idx) in authList" class="py-4 b-gray-1" :class="{ 'b-b': idx !== authList.length - 1 }">

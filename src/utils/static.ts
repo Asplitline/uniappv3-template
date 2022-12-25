@@ -1,6 +1,4 @@
-import { baseUrl } from "@/api/request"
-
-
+import { baseUrl } from '@/api/request'
 
 export const defaultAvatar = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
 export const defaultImg = 'https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png'

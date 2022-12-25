@@ -2,18 +2,23 @@
   <cs-layout class="modify-info">
     <pcs-navbar title="个人信息"> </pcs-navbar>
     <view class="mx-a mt-8 px-2">
+      {{ fileList }}
+
       <view class="md-form">
         <u-form :model="formModel" ref="uForm" class="bg-white shadow b-rd-2 px-4 pb-2" label-width="120">
           <u-form-item :border-bottom="true" class="">
             <text class="min-w-160">头像 </text>
             <u-upload
               :action="uploadUrl"
+              ref="avatarUpload"
               :max-count="1"
               name="files"
               :file-list="fileList"
               width="120"
               height="120"
               @on-success="uploadSuccess"
+              @before-upload="beforeUpload"
+              @on-remove="uploadRemove"
             ></u-upload>
           </u-form-item>
           <u-form-item :border-bottom="true" class="">
@@ -69,6 +74,8 @@ import { onShow } from '@dcloudio/uni-app'
 import { inject, reactive, ref, toRefs } from 'vue'
 const { updateInfo } = useUserStore()
 const { userInfo } = toRefs(useUserStore())
+
+const avatarUpload = ref()
 console.log('userInfo: ', userInfo)
 const img = inject('img')
 const fileList = ref<Array<{ url: string }>>([])
@@ -107,10 +114,22 @@ const handleModify = async () => {
   }
 }
 const uploadSuccess = (url: string) => {
+  console.log('success upload :', url)
   formModel.url = url
 }
+
+const uploadRemove = () => {
+  fileList.value = []
+}
+
+const beforeUpload = () => {
+  avatarUpload.value.clear()
+}
+
 onShow(() => {
-  fileList.value = [{ url: img(userInfo.value.url) as string }]
+  if (userInfo.value.url) {
+    fileList.value = [{ url: img(userInfo.value.url) as string }]
+  }
   Object.assign(formModel, deepClone(userInfo.value))
 })
 </script>
