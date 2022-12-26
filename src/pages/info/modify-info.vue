@@ -2,8 +2,6 @@
   <cs-layout class="modify-info">
     <pcs-navbar title="个人信息"> </pcs-navbar>
     <view class="mx-a mt-8 px-2">
-      {{ fileList }}
-
       <view class="md-form">
         <u-form :model="formModel" ref="uForm" class="bg-white shadow b-rd-2 px-4 pb-2" label-width="120">
           <u-form-item :border-bottom="true" class="">
@@ -128,7 +126,7 @@ const beforeUpload = () => {
 
 onShow(() => {
   if (userInfo.value.url) {
-    fileList.value = [{ url: img(userInfo.value.url) as string }]
+    // fileList.value = [{ url: img(userInfo.value.url) as string }]
   }
   Object.assign(formModel, deepClone(userInfo.value))
 })
