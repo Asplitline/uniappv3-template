@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+import { onShow } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 const title = ref('Hello')
 const skip = () => {
@@ -17,6 +18,15 @@ const skip = () => {
     url: '/pages/login/index'
   })
 }
+
+onShow(() => {
+  uni.navigateTo({
+    url: '/pages/demo/index',
+    fail(e) {
+      console.log('e :', e)
+    }
+  })
+})
 </script>
 
 <style></style>

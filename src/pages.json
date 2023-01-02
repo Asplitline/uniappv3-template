@@ -14,6 +14,13 @@
         "navigationBarTitleText": "login",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/demo/index",
+      "style": {
+        "navigationBarTitleText": "demo",
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {
