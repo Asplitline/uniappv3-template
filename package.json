@@ -52,7 +52,7 @@
     "echarts": "^5.4.1",
     "pinia": "^2.0.28",
     "sass": "^1.56.2",
-    "vk-uview-ui": "file:.yalc/vk-uview-ui",
+    "vk-uview-ui": "1.4.4",
     "vue": "^3.2.45",
     "vue-i18n": "^9.1.9"
   },
