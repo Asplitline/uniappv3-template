@@ -4,8 +4,9 @@
 
 <script lang="ts" setup>
 import { getCurrentInstance } from 'vue'
+const root = getCurrentInstance()?.ctx?.$root
 
-const appChooseFile = ({ cuWebview = '', url, name = 'file', header, addName = '', addSize = '', maxSize = 10, ...formData } = {}) => {
+const appChooseFile = ({ url, name = 'file', maxSize = 10, ...formData } = {}) => {
   // #ifdef APP-PLUS
   let wvPath = '/static/uni_modules/hybrid/html/index.html'
   let wv = plus.webview.create(
@@ -19,23 +20,22 @@ const appChooseFile = ({ cuWebview = '', url, name = 'file', header, addName = '
     },
     {
       url,
-      header,
-      addName,
-      addSize,
+      // header,
+      // addName,
+      // addSize,
       maxSize,
       formData,
       key: name
     }
   )
   wv.loadURL(wvPath)
-  const root = getCurrentInstance()
-  console.log('root: ', root)
-  // this.$root.$scope.$getAppWebview().append(wv)
+  root.$scope.$getAppWebview().append(wv)
   // wv.overrideUrlLoading({ mode: 'reject' }, (e) => {
-  //   let { fileName, size, str } = this.getRequest(e.url)
-  //   fileName = unescape(fileName)
-  //   str = unescape(str)
-  //   return this.handleBack(fileName, str, size)
+  //   console.log('e: ', e)
+  //   // let { fileName, size, str } = this.getRequest(e.url)
+  //   // fileName = unescape(fileName)
+  //   // str = unescape(str)
+  //   // return this.handleBack(fileName, str, size)
   // })
   // #endif
 }

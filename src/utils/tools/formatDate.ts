@@ -1,6 +1,5 @@
 /**
  * @name formatDate
- *
  * @param t
  * @param format
  * @returns

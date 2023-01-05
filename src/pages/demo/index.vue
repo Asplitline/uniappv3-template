@@ -7,7 +7,6 @@
 
 <script lang="ts" setup>
 import { shallowRef } from 'vue'
-
 const csFile = shallowRef()
 const onUpload = () => {
   csFile.value.upload({
